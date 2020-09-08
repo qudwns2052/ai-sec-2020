@@ -4,7 +4,7 @@ def recur(li1, li2, result) :
     # 결과값 추가
     result.append(li1)
     
-    # li2에서 하나씩 꺼내 재귀함수를 호출하고, 호출될 때마다 li1 + [x]를 결과값에 추가하고 + 반복문을 진행
+    # enumerate를 통해 현재 횟수 + li2값을 꺼냄 ->  재귀함수를 호출하고, 호출될 때마다 li1 + [x]를 결과값에 추가하고 + 반복문을 진행
     for i, x in enumerate(li2) :
         # 1번째 인자로 기존의 li1에 꺼낸 값을 추가, 2번재 인자로 꺼낸 값을 제외한 나머지 li2를 전달, 3번째 인자로 기존의 결과값 저장을 위한 리스트 전달
         recur(li1 + [x], li2[i+1:], result)
@@ -24,9 +24,11 @@ def comb(li) :
     return result[1:]
 
 # test
-if __name__ == "__main__":
+if __name__ == "__main__" :
 
     li1 =[x for x in range(randint(1, 10))]
+
+    # 중복 제거 잘 되는지 확인
     li2 =[x for x in range(randint(1, 10))] + [x for x in range(randint(1, 10))]    
 
     test1 = comb(li1)
